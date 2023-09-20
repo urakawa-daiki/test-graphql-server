@@ -8,7 +8,9 @@ const yoga = createYoga({ schema });
 // Pass it into a server to hook into request handlers.
 const server = createServer(yoga);
 
-const port = process.env.API_PORT || 4000;
+const port = Number(process.env.API_PORT) || 4000;
 
 // Start the server and you're done!
-server.listen(port);
+server.listen(port, () => {
+  console.log(`🚀 GraphQL Server ready at http://localhost:${port}/graphql`);
+});
